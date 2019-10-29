@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>猜數字</title>
+    
+
+    <style>
+    .card{
+        width: 400px;
+        margin: auto;
+    }
+
+    .text{
+        margin-top: 10px;
+        margin-bottom: 10px
+    }
+    
+    .card input{
+        width: 130px;
+        height: 20px;
+    }
+    #resetBtn{
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.5s
+    }
+    #resetBtn.active{
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- 製作目標說明
+    
+        1. 產生一個0~100的隨機數字
+        2. 紀錄回合數
+        3. 錯誤時，顯示太大 / 太小
+            要縮小數字範圍 e.g. (A:83, 猜51->51~100)
+            並將縮小範圍顯示於畫面上
+        4. 答對時，顯示成功
+        5.  RESET (重新開始))
+    
+    -->
+    <div class="card">
+        <h1>猜數字 0~100 </h1>
+        <div class="text"> 猜猜數字 </div>
+        <input id="guessNumber" name="guessNumber" type="number" min="0" max="100" >
+        <button id="checkBtn">確認</button>
+        <button id="resetBtn" type="reset" > 重新開始</button>
+    </div>
+
+    <script>
+    /* 步驟說明 */
+    
+  /*    1. 先產生一個隨機數字作為答案丟入變數中 
+            使用 內建函式Math.random來產生亂數
+            但會有問題因為只會產生: 0~1 之間有小數的亂數
+            所以就使用Math.floor 會將小數點無條件捨去
+            但也只會出現0, 所以在random時*想要的區間-> 0~50 ->*50
+    */
+    let answer_number = Math.floor(Math.random()*100)
+    let text = document.querySelector('.text')
+    let guessRound =1
+    let minNumber =0
+    let maxNumber =100
+    let resetBtn = document.querySelector('#resetBtn')
+    console.log('答案是:' , answer_number )
+
+    
+    
+
+    /* 2. 取得btn按下去的事件 並取得值 用value
+            但此時取得的值會是'字串' 若不做型態轉換後面無法比大小
+            所以使用 parseInt( 值, 進位數2~26 預設10 非必要填 ) */
+
+    /* Tips 1: 在做函式時，可以將條件下面都用log 確認東西都有抓到沒問題之後再繼續做下去 
+            2: 當字串與變數要一起呈現的時候，有兩種方法可以利用 :
+                (1) 用 + 或 ,做分段 (2) 樣板字符template literals 
+            3: 記得要把變數放在最上面 方便管理也告訴別人有什麼變數會被使用
+    */
+    let answer_btn = document.querySelector('#checkBtn')  
+
+    answer_btn.onclick = function(){
+        let guessNumber = parseInt(document.querySelector('#guessNumber').value)
+/*         console.log(guessNumber); --> 確認是否正確抓取到大小值 */
+        if( guessNumber === answer_number){
+            text.innerHTML = `答對了 厲害 <br> 你猜了 ${guessRound}次`
+            // 顯示重置按鈕
+            resetBtn.classList.add('active')
+
+
+        } else if(guessNumber > answer_number ){
+            maxNumber = guessNumber
+/*          console.log( minNumber,maxNumber ); --> 確認是否正確抓取到大小值*/
+            
+            text.innerHTML = `猜錯了，太大! <br> 你共猜了${guessRound}次 <br>重猜一次，範圍: ${minNumber}~ ${maxNumber}`
+            guessRound++;
+            
+        }else{
+            minNumber = guessNumber
+/*             console.log( minNumber,maxNumber ); --> 確認是否正確抓取到大小值*/
+            text.innerHTML = `猜錯了，太小! <br> 你共猜了 ${guessRound}次 <br> 重猜一次，範圍: ${minNumber}~${maxNumber}` 
+            guessRound++;
+            
+        }
+    }
+
+    //  重置按鈕需要的功能 (1) a new answer (2) 將數值恢復原本測設定 (3) 輸入框文字消失 (4) 讓reset按鈕消失
+    // Tips 4: document.querySelector('#id').value, 是個很神奇的東西 可以當get數值(右) 亦可set重設數值(左)
+
+    /* 恢復原數值: 不要想太多太難... 1. 讓random重跑一次 2.將原數值再打一次 */
+
+    resetBtn.onclick = function(){
+        answer_number = Math.floor(Math.random()*100)
+        console.log('新答案是', answer_number);
+
+        text.innerHTML = '重新猜一次'
+        guessRound =1
+        minNumber =0
+        maxNumber =100
+
+        document.querySelector('#guessNumber').value = ''
+
+        resetBtn.classList.remove('active')
+    }
+    </script>
+
+</body>
+
+</html>

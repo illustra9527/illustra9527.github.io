@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分頁練習</title>
+
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #eeeeee;
+        }
+
+        h1{
+            margin:5px 0
+        }
+
+        #all {
+            max-width: 400px;
+            margin: auto;
+            margin-top:20px;
+        }
+
+        #tabs{
+            display: flex;
+            
+        }
+        .tab{
+            margin-right:10px;
+            border-radius: 10px 10px 0 0;
+            padding: 5px 25px;
+            background-color: rgb(160, 160, 160);
+            color:white;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        .tab.active{
+            background-color: white;
+            color:black;
+        }
+
+        #contents{
+            background-color: white;
+            padding: 10px;
+
+        }
+        .content{
+            opacity: 0;
+            pointer-events: none;
+            
+        }
+        .content.active{
+            opacity: 1;
+            pointer-events: all;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div id="all">
+        <div id="tabs">
+            <div id="tab_btn_1" class="tab  active">tab1</div>
+            <div id="tab_btn_2" class="tab">tab2</div>
+            <div id="tab_btn_3" class="tab">tab3</div>
+        </div>
+        <div id="contents">
+            <div id="content_1" class="content active">
+                <h1>Tab1 title</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nemo similique doloremque
+                    laudantium corporis amet dignissimos sed, sequi unde tempora dolore et odio asperiores commodi
+                    assumenda quisquam? Et, libero iure?</p>
+            </div>
+            <div id="content_2" class="content" >
+                <h1>Tab2 title</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nemo similique doloremque
+                    laudantium corporis amet dignissimos sed, sequi unde tempora dolore et odio asperiores commodi
+                    assumenda quisquam? Et, libero iure?</p>
+            </div>
+            <div id="content_3" class="content">
+                <h1>Tab3 title</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nemo similique doloremque
+                    laudantium corporis amet dignissimos sed, sequi unde tempora dolore et odio asperiores commodi
+                    assumenda quisquam? Et, libero iure?</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    </div>
+
+    <script>
+        let tab_btn_1 = document.querySelector('#tab_btn_1')
+        let tab_btn_2 = document.querySelector('#tab_btn_2')
+        let tab_btn_3 = document.querySelector('#tab_btn_3')
+        let content_1 = document.querySelector('#content_1')
+        let content_2 = document.querySelector('#content_2')
+        let content_3 = document.querySelector('#content_3')
+    
+
+        tab_btn_1.onclick = function(){
+            remove_active()
+
+            tab_btn_1.classList.add('active')
+            content_1.classList.add('active')
+        }
+
+        tab_btn_2.onclick = function(){
+            remove_active()
+
+            tab_btn_2.classList.add('active')
+            content_2.classList.add('active')
+            
+        }
+
+        tab_btn_3.onclick = function(){
+            remove_active()
+
+            tab_btn_3.classList.add('active')
+            content_3.classList.add('active')
+
+        }
+
+        function remove_active(){
+            tab_btn_1.classList.remove('active')
+            tab_btn_2.classList.remove('active')
+            tab_btn_3.classList.remove('active')
+            content_1.classList.remove('active')
+            content_2.classList.remove('active')
+            content_3.classList.remove('active')
+        }
+    </script>
+
+
+</body>
+
+</html>
