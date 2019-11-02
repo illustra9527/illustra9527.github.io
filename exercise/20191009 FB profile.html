@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+<!-- 2 bugs Here:
+    右邊不明白色地方？
+    螢幕托拉 div跑掉
+ -->
+
+
+    <style>
+        body{
+            margin:0;
+            background-color:#eeeeee;
+        }
+        #fbBlueBar{
+            background-color: #4267b2;
+            width:100%;
+            height:43px;
+        }
+        #fbBlueBarMain{
+            margin:auto;
+            width:80%;
+        }
+        #fbBlueBarMain-L{
+            width:60%;
+            height: 43px;
+            float:left;
+        }
+        #BlueBarLogo{
+            width:24px;
+            height:42px;
+            padding:9px;
+            float:left;
+        }
+        #BlueBarLogo-photo{
+            width:24px;
+            height:24px;
+            background-image: url('https://i.imgur.com/ls6ErCk.png');
+            background-size:cover;
+            background-position: center;
+        }
+        #BlueBarSearch{
+            width:40%;
+            height:42px;
+            float:left;
+            padding-top:8px;
+        }
+        #BlueBarSearch > input{
+            width:100%;
+            height:24px;
+            border:0 none;
+            border-radius: 2px;
+            padding-left: 20px;
+        }
+        #fbBlueBarMain-R{
+            width:40%;
+            height: 43px;
+            float:right;
+        }
+        #fbBlueBarMain-R-Btn-a{
+            width:100px;
+            height:42px;
+            position: relative;
+            float:left;
+            margin-left:70px;
+        }
+        #fbBlueBarMain-R-Btn-a-name{
+            width:100%;
+            height:24px;
+            color:white;
+            font-weight: 600;
+            font-size:12px;
+            text-align: center;
+            line-height: 24px;
+            box-sizing: border-box;
+            position: absolute;
+            top:10px;
+            border-radius: 2px;
+            letter-spacing: 1px;
+        }
+        #fbBlueBarMain-R-Btn-a-name:hover{
+            background-color:#2b4579;
+        }
+        #fbBlueBarMain-R-Btn-b{
+            width:50px;
+            height:42px;
+            position: relative;
+            float:left;
+        }
+
+        #fbMainContainer{
+            width:80%;
+            height:1000px;
+            margin:auto;
+        }
+        #fbProfileCover{
+            width:100%;
+            height:315px;
+            background-image: url('https://cdn.thewirecutter.com/wp-content/uploads/2018/06/cataccessories-lowres-2x1-05916.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        #fbUserName{
+            color:white;
+            position: relative;
+            top:240px;
+            left:230px;
+            font-size:30px;
+            font-weight: bold;
+        }
+        #fbTimelineHead{
+            width:100%;
+            height:43px;
+            background-color: #fff;
+            position:relative;
+        }
+        #fbProfilePhoto{
+            width:170px;
+            height:170px;
+            border:5px solid white;
+            border-radius: 50%;
+            position:relative;
+            bottom:155px;
+            left:25px;
+            background-image: url('https://images.theconversation.com/files/280024/original/file-20190618-118505-aag3r7.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip');
+            background-size:cover;
+            background-position:center;
+            float:left;
+            z-index:3;
+        }
+        #fbProfileButton{
+            width:30%;
+            height:50px;
+            float:right;
+            position: absolute;
+            bottom:70px;
+            right:10px;
+        }
+        #fbProfileButton-L{
+            width:100px;
+            height:25px;
+            background: rgb(240, 240, 240);
+            margin-left:20px;
+            margin-top:10px;
+            margin-right:8px;
+            float:left;
+            border: 1px solid black;
+            border-radius: 2px;
+        }
+        #fbProfileButton-R{
+            width:100px;
+            height:25px;
+            background: rgb(240, 240, 240);
+            margin-top:10px;
+            float:left;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            border-left: 1px solid black;
+            border-top-left-radius: 2px;
+        }
+        #fbProfileButton-RMore{
+            width:35px;
+            height:25px;
+            background: rgb(240, 240, 240);
+            margin-top:10px;
+            float:left;
+            border-left: 1px solid lightgray;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+            border-top-right-radius: 2px;
+        }
+        .btntype{
+            font-size:13px;
+            line-height: 25px;
+            width:100px;
+            height:25px;
+            padding:20px;
+            text-decoration: none;
+            color:rgb(38, 38, 38);
+        }
+
+        #fbProfileButton-RMore > .btntype{
+            font-size:15px;
+            width:100px;
+            height:25px;
+            padding-left:8px;
+            text-decoration: none;
+            color:rgb(38, 38, 38);
+        }
+        #fbTimelineHeadList{
+            width:655px;
+            height:43px;
+/*             clear:right; */
+            position: absolute;
+            right:0px;
+            z-index: 2;
+
+        }
+        #fbTimelineHeadListBtn{
+            width:100px;
+            height:43px;
+            float:left;
+            clear:right;
+            border-left:1px solid lightgray;
+            line-height: 42px;
+            text-align: center;
+            color:rgb(57, 57, 57);
+        }
+        #fbTimelineHeadListBtn:hover{
+            background-color:rgb(196, 196, 196);
+        }
+/* 使用 ul 加入div 排版失敗
+        #fbTimelineHeadListStyle{
+            list-style-type: none;
+            padding:0;
+            margin:0;
+            display:inline;
+        }
+        #fbTimelineHeadListStyle-tb{
+            width:100px;
+            height:42px;
+            line-height: 43px;
+            clear:left;
+            float:left;           
+        } */
+        .rightline{
+            border-right: 1px solid lightgray;
+        }
+        .btntype2{
+            font-size:15px;
+            line-height: 25px;
+            width:100px;
+            height:25px;
+            padding:20px;
+            text-decoration: none;
+            color:rgb(57, 57, 57);
+        }
+
+    
+    </style>
+</head>
+<body>
+
+    <div id="fbBlueBar">
+        <div id="fbBlueBarMain">
+            <div id="fbBlueBarMain-L">
+                <div id="BlueBarLogo">
+                    <div id="BlueBarLogo-photo"></div>
+                </div>
+                <div id="BlueBarSearch">
+                    <input type="text" placeholder="Search Here">
+                </div>
+
+            </div>
+            <div id="fbBlueBarMain-R">
+                <div id="fbBlueBarMain-R-Btn-a">
+                    <div id="fbBlueBarMain-R-Btn-a-name">Big FatCat</div> 
+                </div>
+                <div id="fbBlueBarMain-R-Btn-b">
+                    <div id="fbBlueBarMain-R-Btn-a-name">首頁</div> 
+                </div>
+                <div id="fbBlueBarMain-R-Btn-b">
+                    <div id="fbBlueBarMain-R-Btn-a-name">建立</div> 
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div id="fbMainContainer">
+        <div id="fbProfileCover">
+            <div id="fbUserName">Big FatCat</div>
+        </div>
+        <div id="fbTimelineHead">
+            <div id="fbProfilePhoto"></div>
+            <div id="fbProfileButton">
+                <div id="fbProfileButton-L">
+                    <a role="button" href="www.google.com.tw" class="btntype">更新資料</a>
+                </div>
+                <div id="fbProfileButton-R">
+                    <a href="www.google.com.tw" class="btntype">活動紀錄</a>
+                </div>
+                <div id="fbProfileButton-RMore">
+                    <a href="www.google.com.tw" class="btntype">⋯</a>
+                </div>
+            </div>
+            <div id="fbTimelineHeadList">
+                <div id="fbTimelineHeadListBtn"><a class="btntype2" role="button" href="www.google.com.tw">動態</a></div>
+                <div id="fbTimelineHeadListBtn"><a class="btntype2" role="button" href="www.google.com.tw">朋友</a></div>
+                <div id="fbTimelineHeadListBtn"><a class="btntype2" role="button" href="www.google.com.tw">關於</a></div>
+                <div id="fbTimelineHeadListBtn"><a class="btntype2" role="button" href="www.google.com.tw">典藏</a></div>
+                <div id="fbTimelineHeadListBtn" class="rightline"><a class="btntype2" href="google.com">更多</a></div>
+<!--                 <ul class="fbTimelineHeadListStyle">
+                    <li>
+                        <div class="fbTimelineHeadListStyle-tb">動態</div>
+                    </li>
+                    <li>
+                        <div class="fbTimelineHeadListStyle-tb">動態</div>
+                    </li>
+                    <li>
+                        <div class="fbTimelineHeadListStyle-tb">動態</div>
+                    </li>
+                    <li>
+                        <div class="fbTimelineHeadListStyle-tb">動態</div>
+                    </li>
+                    <li>
+                        <div class="fbTimelineHeadListStyle-tb">動態</div>
+                    </li> -->
+                
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分頁練習</title>
+
+    <style>
+        body{
+            margin:0;
+            background-color: lightcoral
+        }
+        #all{
+            max-width: 400px;
+            margin: auto;
+            margin-top:30px;
+        }
+        h1{
+            margin:0;
+        }
+        .tabs{
+            display: flex;
+        }
+        .tab_btn{
+            padding: 5px 10px;
+            margin-right:5px;
+            border-radius: 10px 10px 0 0;
+            background-color: #eeeeee;
+            color:lightslategray;
+            cursor: pointer;
+            transition: 0.5s
+        }
+        .tab_btn.active{
+            background-color: white;
+            color:black
+        }
+        .contents{
+            padding: 10px;
+            background-color: white;
+            border-radius: 0 5px 5px 5px;
+        }
+        .content{
+            display:none;
+        }
+        .content.active{
+            display:block ;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="all">
+        <div class="tabs">
+            <div id="tab_1" class="tab_btn active">Tab 1</div>
+            <div id="tab_2" class="tab_btn">Tab 2</div>
+            <div id="tab_3" class="tab_btn">Tab 3</div>
+        </div>
+        <div class="contents">
+            <div id="content_1" class="content active">
+                <h1>Tab1 Title 1</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore inventore iure atque. Ea cumque iste, amet magnam atque sed quibusdam aperiam minima vero rem dolore totam maxime animi fugiat consectetur.</p>
+            </div>
+            <div id="content_2" class="content">
+                <h1>Tab1 Title 2</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore inventore iure atque. Ea cumque iste, amet magnam atque sed quibusdam aperiam minima vero rem dolore totam maxime animi fugiat consectetur.</p>
+            </div>
+            <div id="content_3" class="content">
+                <h1>Tab1 Title 3</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore inventore iure atque. Ea cumque iste, amet magnam atque sed quibusdam aperiam minima vero rem dolore totam maxime animi fugiat consectetur.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let tab_1 = document.querySelector('#tab_1')
+        let tab_2 = document.querySelector('#tab_2')
+        let tab_3 = document.querySelector('#tab_3')
+        let content_1 = document.querySelector('#content_1')
+        let content_2 = document.querySelector('#content_2')
+        let content_3 = document.querySelector('#content_3')
+
+        tab_1.onclick = function(){
+            remove_active()
+            tab_1.classList.add('active')
+            content_1.classList.add('active')
+        }   
+        tab_2.onclick = function(){
+            remove_active()
+            tab_2.classList.add('active')
+            content_2.classList.add('active')
+        }   
+        tab_3.onclick = function(){
+            remove_active()
+            tab_3.classList.add('active')
+            content_3.classList.add('active')
+        }   
+
+        function remove_active(){
+            tab_1.classList.remove('active')
+            tab_2.classList.remove('active')
+            tab_3.classList.remove('active')
+            content_1.classList.remove('active')
+            content_2.classList.remove('active')
+            content_3.classList.remove('active')
+        }
+    
+    </script>
+</body>
+</html>

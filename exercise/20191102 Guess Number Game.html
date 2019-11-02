@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>猜數字 Guess number</title>
+    <style>
+    body{
+        margin: 0
+    }
+
+    #card{
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .content{
+        padding: 10px;
+        margin: 10px 0;
+        height: 60px;
+    }
+
+    #input{
+        width: 100px;
+        margin-right:10px;
+    }
+    #guessBtn{
+        margin-right:10px;
+        opacity: 1;
+        pointer-events: all;
+        transition: 0.5s opacity;
+    }
+    #guessBtn.remove{
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.5s opacity;
+    }
+    
+    #restartBtn{
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.5s opacity;
+    }
+
+    #restartBtn.active{
+        opacity: 1;
+        pointer-events: all;
+        transition: 0.5s opacity;
+    }
+    
+    </style>
+</head>
+<body>
+
+    <div id="card">
+        <h1>來猜數字</h1>
+        <div class="content">來猜數字, １～１００</div>
+        <input type="number" id="input"><button id="guessBtn">送出</button><button id="restartBtn">重新開始</button>
+
+    </div>
+
+    <script>
+
+    let answer = Math.floor(Math.random()*101+1)
+    console.log('答案是：', answer)
+    const guessBtn = document.querySelector('#guessBtn')
+    const restartBtn = document.querySelector('#restartBtn')
+    let content = document.querySelector('.content')
+    let guessRound = 1
+    let minNumber = 0
+    let maxNumber = 100
+
+
+    guessBtn.onclick = function(){
+        let guessNumber = parseInt(document.querySelector('#input').value);
+        if (guessNumber == answer) {
+            //猜對 (1) content (2) remove guess btn (3) add restart btn
+            content.innerHTML = `恭喜答對 <br> 你猜了${guessRound}次`
+            guessBtn.classList.add('remove');
+            restartBtn.classList.add('active')
+
+        }else if (guessNumber > answer) {
+            //猜錯 太大 (1) content (2) range (3)print rounds and +1 
+            maxNumber = guessNumber
+            content.innerHTML = `猜錯囉，太大了，再猜 <br> 範圍：${minNumber} ~ ${maxNumber}<br> 你猜了${guessRound}次`
+            guessRound++
+        }else{
+            //猜錯 太小
+            minNumber = guessNumber
+            content.innerHTML = `猜錯囉，太小了，再猜 <br> 範圍：${minNumber} ~ ${maxNumber}<br> 你猜了${guessRound}次`
+            guessRound++
+        }
+    }
+    
+    
+    restartBtn.onclick = function(){
+        // (1) new answer (2) reset defaults (3) remove restart btn (4)add guess btn
+        answer = Math.floor(Math.random()*100);
+        guessRound = 1
+        minNumber = 0
+        maxNumber = 100
+        content.textContent = '再玩一次，猜數字 1 ~ 100'
+        document.querySelector('#input').value = ''
+        guessBtn.classList.remove('remove');
+        restartBtn.classList.remove('active');
+        console.log('新的答案：', answer);
+        
+    }
+
+
+
+    </script>
+
+
+</body>
+</html>

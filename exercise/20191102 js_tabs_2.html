@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tabs with jQuery and for loop</title>
+
+
+    <style>
+    body{
+        margin: 0;
+        background-color: seashell
+    }
+    
+    h1{
+        margin:0;
+    }
+    #all{
+        max-width: 400px;
+        margin: 0 auto;
+        margin-top:50px;
+    }
+    #tabs{
+        display: flex;
+    }
+    .tab{
+        padding: 5px 15px;
+        margin-right: 5px;
+        border-radius: 10px 10px 0 0 ;
+        background-color: lightseagreen;
+        color:white;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .tab.active{
+        background-color:lightskyblue;
+        color:black;
+        transition: 0.3s;
+    }
+    
+    .contents{
+        background-color:lightskyblue;
+        border-radius: 0 10px 10px 10px ;
+        padding: 20px;
+    }
+    .content{
+        display:none;
+    }
+    .content.active{
+        display: block;
+    }
+    #switch_btn{
+        margin:20px 0;
+        font-weight: 600;
+        border-radius: 2px;
+        
+    }
+    #photo{
+        max-width: 400px;
+        border-radius: 10px
+
+    }
+
+    </style>
+</head>
+<body>
+    <div id="all">
+        <div id="tabs">
+            <div id="tab1" class="tab active">Tab 1</div>
+            <div id="tab2" class="tab">Tab 2</div>
+            <div id="tab3" class="tab">Tab 3</div>
+        </div>
+        <div class="contents">
+            <div id="content1" class="content active"> 
+                <h1>Content 1</h1> 
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti adipisci cupiditate alias voluptas nihil. Doloremque modi similique neque possimus illo quae ex quasi, distinctio nisi quas porro, autem officiis ducimus!</p>
+            </div>
+            <div id="content2" class="content"> 
+                <h1>Content 2</h1> 
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti adipisci cupiditate alias voluptas nihil. Doloremque modi similique neque possimus illo quae ex quasi, distinctio nisi quas porro, autem officiis ducimus!</p>
+            </div>
+            <div id="content3" class="content"> 
+                <h1>Content 2</h1> 
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti adipisci cupiditate alias voluptas nihil. Doloremque modi similique neque possimus illo quae ex quasi, distinctio nisi quas porro, autem officiis ducimus!</p>
+            </div>
+
+        </div>
+        <button id="switch_btn">Switch photo</button>
+        <div id="photocard"> <img id="photo" src="https://cdn.pixabay.com/photo/2016/01/19/13/58/pollution-1148841_1280.jpg" alt="ptho">
+        </div>
+
+    </div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+     -->
+
+<script src="./js/20191102 tabs.js"></script>
+
+
+</body>
+</html>
