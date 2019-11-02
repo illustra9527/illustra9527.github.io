@@ -1,10 +1,19 @@
-// declares of tabs 
-let tab1 = document.querySelector('#tab1')
-let tab2 = document.querySelector('#tab2')
-let tab3 = document.querySelector('#tab3')
-let content1 = document.querySelector('#content1')
-let content2 = document.querySelector('#content2')
-let content3 = document.querySelector('#content3')
+
+// declares of tab
+// v3 優化： Using SelectorAll to return array with for loop to do onclick event.
+let tabs = document.querySelectorAll('.tab')
+let contents = document.querySelectorAll('.content')
+
+
+for (let index=0; index < tabs.length; index++){
+    const tab = tabs[index]
+    const content = contents[index]
+    tab.onclick = function(){
+        remove_active();
+        tab.classList.add('active')
+        content.classList.add('active')
+    }
+}
 
 // declares of photos
 let photo = document.querySelector('#photo')
@@ -13,39 +22,16 @@ let photo_B = 'https://cdn.pixabay.com/photo/2018/04/04/11/39/dead-bird-3289550_
 let switch_btn = document.querySelector('#switch_btn')
 
 
-
-
-
 // function of tabs
-// v2 優化: remove -> fucntion
+// v3 優化: make remove_active() to for loop function
 
 function remove_active(){
-    tab1.classList.remove('active')
-    tab2.classList.remove('active')
-    tab3.classList.remove('active')
-    content1.classList.remove('active')
-    content2.classList.remove('active')
-    content3.classList.remove('active')
-}
-
-tab1.onclick = function(){
-    remove_active()
-
-    tab1.classList.add('active')
-    content1.classList.add('active')
-}
-tab2.onclick = function(){
-    remove_active()
-
-    tab2.classList.add('active')
-    content2.classList.add('active')
-}
-tab3.onclick = function(){
-    remove_active()
-
-
-    tab3.classList.add('active')
-    content3.classList.add('active')
+    for (let index=0; index<tabs.length; index++){
+        const tab_remove = tabs[index];
+        const content_remove = contents[index]
+        tab_remove.classList.remove('active')
+        content_remove.classList.remove('active')
+    }
 }
 
 // function of photos
