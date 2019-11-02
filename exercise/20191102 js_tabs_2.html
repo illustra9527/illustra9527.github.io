@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>tabs with jQuery and for loop</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 
     <style>
@@ -23,6 +24,7 @@
     }
     #tabs{
         display: flex;
+        cursor: pointer;
     }
     .tab{
         padding: 5px 15px;
@@ -42,13 +44,23 @@
     .contents{
         background-color:lightskyblue;
         border-radius: 0 10px 10px 10px ;
-        padding: 20px;
+        padding: 20px;        cursor: default;
     }
+
+    /* v2: 優化content 顯示方式：漸變 */
     .content{
-        display:none;
+        opacity: 0;
+        pointer-events: none;
+        height: 0;
+        overflow: hidden;
+        transition: 0.3s opacity;
     }
     .content.active{
-        display: block;
+        opacity: 1;
+        pointer-events: all;
+        height: auto;
+        overflow: hidden;
+        transition: 0.3s opacity;
     }
     #switch_btn{
         margin:20px 0;
@@ -58,10 +70,9 @@
     }
     #photo{
         max-width: 400px;
-        border-radius: 10px
-
+        border-radius: 10px;
     }
-
+    
     </style>
 </head>
 <body>
@@ -92,9 +103,8 @@
 
     </div>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
-     -->
 
+    
 <script src="./js/20191102 tabs.js"></script>
 
 

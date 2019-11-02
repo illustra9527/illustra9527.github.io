@@ -17,35 +17,32 @@ let switch_btn = document.querySelector('#switch_btn')
 
 
 // function of tabs
-tab1.onclick = function(){
+// v2 優化: remove -> fucntion
+
+function remove_active(){
     tab1.classList.remove('active')
     tab2.classList.remove('active')
     tab3.classList.remove('active')
     content1.classList.remove('active')
     content2.classList.remove('active')
     content3.classList.remove('active')
+}
+
+tab1.onclick = function(){
+    remove_active()
 
     tab1.classList.add('active')
     content1.classList.add('active')
 }
 tab2.onclick = function(){
-    tab1.classList.remove('active')
-    tab2.classList.remove('active')
-    tab3.classList.remove('active')
-    content1.classList.remove('active')
-    content2.classList.remove('active')
-    content3.classList.remove('active')
+    remove_active()
 
     tab2.classList.add('active')
     content2.classList.add('active')
 }
 tab3.onclick = function(){
-    tab1.classList.remove('active')
-    tab2.classList.remove('active')
-    tab3.classList.remove('active')
-    content1.classList.remove('active')
-    content2.classList.remove('active')
-    content3.classList.remove('active')
+    remove_active()
+
 
     tab3.classList.add('active')
     content3.classList.add('active')
