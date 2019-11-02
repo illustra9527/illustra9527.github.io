@@ -6,10 +6,76 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>tabs with jQuery and for loop</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./CSS/20191102 js_tabs_2.css">
 
-    <!-- v4 優化：CSS => 外連  -->
+<style>
+    body{
+        margin: 0;
+        background-color: seashell
+    }
     
+    h1{
+        margin:0;
+    }
+    #all{
+        max-width: 400px;
+        margin: 0 auto;
+        margin-top:50px;
+    }
+    #tabs{
+        display: flex;
+        cursor: pointer;
+    }
+    .tab{
+        padding: 5px 15px;
+        margin-right: 5px;
+        border-radius: 10px 10px 0 0 ;
+        background-color: lightseagreen;
+        color:white;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .tab.active{
+        background-color:lightskyblue;
+        color:black;
+        transition: 0.3s;
+    }
+    
+    .contents{
+        background-color:lightskyblue;
+        border-radius: 0 10px 10px 10px ;
+        padding: 20px;        
+        cursor: default;
+    }
+
+    /* v2: 優化content 顯示方式：漸變 */
+    .content{
+        opacity: 0;
+        pointer-events: none;
+        height: 0;
+        overflow: hidden;
+        transition: 0.3s opacity;
+    }
+    .content.active{
+        opacity: 1;
+        pointer-events: all;
+        height: auto;
+        overflow: hidden;
+        transition: 0.3s opacity;
+    }
+    #switch_btn{
+        margin:20px 0;
+        font-weight: 600;
+        border-radius: 2px;
+        
+    }
+    #photo{
+        max-width: 400px;
+        border-radius: 10px;
+    }
+    
+
+
+</style>
 </head>
 <body>
     <!-- v4 優化:  delete #ids of tab and content-->
