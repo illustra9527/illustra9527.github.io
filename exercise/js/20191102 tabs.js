@@ -1,19 +1,27 @@
 
 // declares of tab
-// v3 優化： Using SelectorAll to return array with for loop to do onclick event.
+// v4 優化： Using jQuery to replace for loop function
 let tabs = document.querySelectorAll('.tab')
 let contents = document.querySelectorAll('.content')
 
 
-for (let index=0; index < tabs.length; index++){
+/*  for (let index=0; index < tabs.length; index++){
     const tab = tabs[index]
     const content = contents[index]
     tab.onclick = function(){
-        remove_active();
+        remove_active()
         tab.classList.add('active')
         content.classList.add('active')
     }
-}
+}  */
+
+$('.tab').click(function(){
+    remove_active();
+    this.classList.add('active');
+    const content = contents[$(this).index()];
+    content.classList.add('active');
+    
+});
 
 // declares of photos
 let photo = document.querySelector('#photo')
@@ -23,16 +31,17 @@ let switch_btn = document.querySelector('#switch_btn')
 
 
 // function of tabs
-// v3 優化: make remove_active() to for loop function
+// v4 優化: Using for of and forEach replace for loop function
 
 function remove_active(){
-    for (let index=0; index<tabs.length; index++){
-        const tab_remove = tabs[index];
-        const content_remove = contents[index]
+    for (const tab_remove of tabs) {
         tab_remove.classList.remove('active')
-        content_remove.classList.remove('active')
     }
+    contents.forEach(content_remove => {
+        content_remove.classList.remove('active')
+    });
 }
+
 
 // function of photos
 switch_btn.onclick = function(){
