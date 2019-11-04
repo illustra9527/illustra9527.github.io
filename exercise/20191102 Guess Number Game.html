@@ -82,13 +82,16 @@
     const restartBtn = document.querySelector('#restartBtn')
     let content = document.querySelector('.content')
     let guessRound = 1
-    let minNumber = 0
+    let minNumber = 1
     let maxNumber = 100
 
-    
+    // 優化v3 : 新增除錯 alert
+
     guessBtn.onclick = function(){
         let guessNumber = parseInt(document.querySelector('#input').value);
-        if (guessNumber == answer) {
+        if(guessNumber < minNumber || guessNumber > maxNumber){
+            alert(`請輸入合法的數字 ( 範圍 : ${minNumber}~ ${maxNumber} )`)
+        }else if (guessNumber == answer) {
             //猜對 (1) content (2) remove guess btn (3) add restart btn
             content.innerHTML = `恭喜答對 <br> 你猜了${guessRound}次`
             guessBtn.classList.add('remove');
