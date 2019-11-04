@@ -85,11 +85,11 @@
     let minNumber = 1
     let maxNumber = 100
 
-    // 優化v3 : 新增除錯 alert
+    // 優化v3 : 新增除錯 alert 
 
     guessBtn.onclick = function(){
         let guessNumber = parseInt(document.querySelector('#input').value);
-        if(guessNumber < minNumber || guessNumber > maxNumber){
+        if(guessNumber <= minNumber || guessNumber >= maxNumber ){
             alert(`請輸入合法的數字 ( 範圍 : ${minNumber}~ ${maxNumber} )`)
         }else if (guessNumber == answer) {
             //猜對 (1) content (2) remove guess btn (3) add restart btn
@@ -124,7 +124,7 @@
         // (1) new answer (2) reset defaults (3) remove restart btn (4)add guess btn
         answer = Math.floor(Math.random()*100);
         guessRound = 1
-        minNumber = 0
+        minNumber = 1
         maxNumber = 100
         content.textContent = '再玩一次，猜數字 1 ~ 100'
         document.querySelector('#input').value = ''
@@ -133,8 +133,6 @@
         console.log('新的答案：', answer);
         
     }
-
-
 
     </script>
 
