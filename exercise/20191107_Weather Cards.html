@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <style>
+        body{
+            background-image: url('https://cdn.pixabay.com/photo/2014/09/17/09/04/hebei-fengning-bashang-grassland-449220_960_720.jpg');
+            background-position: center;
+            background-size: cover;
+            padding: 50px;
+        }
+        #all{
+            width: 80%;
+            margin: auto;
+            margin-bottom: 50px;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            text-shadow: 3px 1px 1px black; /* 文字加陰影, 第三數值為模糊 */
+        }
+        .cards {
+            perspective: 1000px;
+            /* 攝影機鏡頭 z軸*/
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            min-width: 200px;
+            height: 300px;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            /* 預設flex, 要操作z軸要改這個設定 */
+            margin-right: 30px;
+            margin-top:30px;
+        }
+
+        .card p {
+            cursor: default;
+        }
+
+        .card span {
+            cursor: default;
+        }
+
+        .card:hover {
+            transform: rotateY(180deg)
+        }
+
+        .card_front {
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            background:linear-gradient(#21A2D9, #53C0F0,#B9E5F3,#E0E8F0,white);
+            backface-visibility: hidden;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 20px;
+        }
+
+        .card_front p {
+            margin: 0;
+        }
+
+        .card_background {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        .card_background img {
+            width: 100px;
+        }
+
+        .card_backgroind_rain {
+            background-color: rgb(25, 37, 139)
+        }
+
+        .location p {
+            text-align: end;
+            font-size: 35px;
+            margin-top: 90px;
+            color: white;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        .temperture p {
+            font-size: 50px;
+            margin-top: 20px;
+        }
+
+
+
+        .card_back {
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            background:linear-gradient(#4DD8AD,#55D9C0,white);
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+            box-sizing: border-box;
+            border-radius: 20px;
+        }
+
+        .card_back_info {
+            padding-top: 30px;
+            text-align: center;
+
+        }
+
+        .card_back_info p {
+            margin-bottom: 5px;
+            font-size: 20px;
+            color:white;
+            text-shadow: 2px 2px 5px black;
+
+        }
+
+        .card_back_info span{
+            color:##02231C;
+        }
+        footer {
+            text-align: center;
+            color: white;
+            text-shadow: 3px 1px 1px black;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: white;
+            text-shadow: 3px 1px 1px black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="all">
+        <h1>台灣直轄市天氣卡</h1>
+        <div class="cards">
+            <!-- <div class="card">
+                <div class="card_front">
+                    <div class="card_background">
+                        <img src="https://solarsystem.nasa.gov/system/basic_html_elements/11561_Sun.png" alt="">
+                    </div>
+                    <div class="location">
+                        <p>台中市</p>
+                    </div>
+                    <div class="temperture">
+                        <p>26°C</p>
+                    </div>
+                    <div class="weather_CI">
+                        <p>舒適</p>
+                    </div>
+                </div>
+                <div class="card_back">
+                    <div class="card_back_info">
+                        <p>天氣現象</p>
+                        <span>多雲</span>
+                        <p>降雨機率</p>
+                        <span>0%</span>
+                        <p>明天溫度</p>
+                        <span>20°C~30°C</span>
+                    </div>
+                </div>
+                </div> -->
+        </div>
+    </div>
+    <footer><p>資料源自於 <a href="https://opendata.cwb.gov.tw/index">氣象局 : 氣象資料開放平臺</a></p></footer>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+
+        //抓資料
+        $.ajax({
+            url: 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-B5282D9D-8FDD-40E9-AD48-B1DF3270465D',
+            success: function (result) {
+                weather_data(result)
+            }
+        });
+
+        function weather_data(result) {
+            let allLocation = result.records.location
+            let mainCity = [allLocation[5], allLocation[1], allLocation[13], allLocation[11], allLocation[6], allLocation[15]]
+
+            mainCity.forEach(city => {
+                let cityName = city.locationName
+                let city_minT = city.weatherElement[2].time[0].parameter.parameterName //當日低溫
+                let weather_CI = city.weatherElement[3].time[0].parameter.parameterName //舒適度
+                let weather_Wx = city.weatherElement[0].time[0].parameter.parameterName //天氣現象
+                let weather_PoP = city.weatherElement[1].time[0].parameter.parameterName //降雨機率
+                let tomorrow_MaxT = city.weatherElement[4].time[1].parameter.parameterName //最高溫
+                let tomorrow_MinT = city.weatherElement[2].time[1].parameter.parameterName //最低溫
+                let weatehr_Wx_value = city.weatherElement[0].time[0].parameter.parameterValue //辨識天氣現象的Value
+
+                /* 
+                img/sun.svg
+                img/sun_cloud.svg
+                img/rain.svg
+                 */
+
+                let card_img;
+                let card_imgs = ['img/sun.svg', 'img/sun_cloud.svg','img/rain.svg','img/clouds.svg','img/storm.scg']
+                if (weatehr_Wx_value == '1'){
+                    card_img = card_imgs[0]
+                }else if(weatehr_Wx_value == '2' || weatehr_Wx_value =='3'){
+                    card_img = card_imgs[1]
+                }else if(weatehr_Wx_value == '5' || weatehr_Wx_value == '6' || weatehr_Wx_value == '7'){
+                    card_img = card_imgs[3]
+                }else if(weatehr_Wx_value == '15' || weatehr_Wx_value == '16' || weatehr_Wx_value == '17' || weatehr_Wx_value == '18'){
+                    card_img = card_imgs[4]
+                }else{
+                    card_img = card_imgs[2]
+                }
+
+
+                // 輸出卡片資訊
+                $('.cards').append(`<div class="card">
+                <div class="card_front">
+                    <div class="card_background">
+                        <img id="card_img" src="${card_img}" alt="">
+                    </div>
+                    <div class="location">
+                        <p>${cityName}</p>
+                    </div>
+                    <div class="temperture">
+                        <p>${city_minT}°C</p>
+                    </div>
+                    <div class="weather_CI">
+                        <p>${weather_CI}</p>
+                    </div>
+                </div>
+                <div class="card_back">
+                    <div class="card_back_info">
+                        <p>天氣現象</p>
+                        <span>${weather_Wx}</span>
+                        <p>降雨機率</p>
+                        <span>${weather_PoP}%</span>
+                        <p>明天溫度</p>
+                        <span>${tomorrow_MinT}°C~${tomorrow_MaxT}°C</span>
+                    </div>
+                </div>
+                </div>`)
+                
+            });
+            
+        }
+
+
+        
+
+    </script>
+</body>
+
+</html>
