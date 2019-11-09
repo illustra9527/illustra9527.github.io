@@ -1,0 +1,310 @@
+body {
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.nonLinkStyle {
+    list-style-type: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+.boxSize {
+    box-sizing: border-box;
+}
+
+#all {
+    width: 100%;
+}
+
+
+
+
+/* media screen container */
+
+.container {
+    margin: auto;
+}
+
+@media (max-width:1680px) {
+    .container {
+        width: 1336px;
+    }
+}
+
+@media (max-width:1460px) {
+    .container {
+        width: 1136px;
+    }
+}
+
+@media (max-width:1280px) {
+    .container {
+        width: 960px;
+    }
+}
+
+@media (max-width:1024px) {
+    .container {
+        width: 100%;
+        padding: 0 30px
+    }
+}
+
+
+/* nav */
+
+nav {
+    width: 100%;
+    height: 48px;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    top: 0;
+    justify-content: flex-start;
+}
+
+.nav_logo {
+    width: 190px;
+    height: 48px;
+    align-items: center;
+}
+
+/* media screen of nav_logo size */
+
+
+
+@media (max-width: 1024px) {
+    .nav_logo {
+        width: 60px;
+    }
+}
+
+@media (max-width: 670px) {
+    .nav_logo {
+        width: 30px;
+    }
+}
+
+nav img {
+    width: 16px;
+}
+
+.nav_info {
+    height: 48px;
+}
+
+.nav_info a {
+    text-decoration: none;
+    color: white;
+    line-height: 48px;
+}
+
+.nav_links {
+    flex: 1 1 auto;
+    padding: 0 120px 0 240px;
+}
+
+/* media screen of nav_links padding */
+
+@media (max-width: 1460px) {
+    .nav_links {
+        padding: 0 60px 0 120px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .nav_links {
+        padding: 0 0px 0 120px;
+    }
+}
+
+@media (max-width: 767px) {
+    .nav_links {
+        display: none;
+    }
+}
+
+.nav_links_ul {
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    width: 100%;
+}
+
+.nav_links_ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav_links_ul a:hover {
+    color: rgb(37, 142, 222);
+}
+
+/* toggle Menu Btn */
+
+.toggleMenuBtn {
+    display: none;
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    z-index: 50;
+    border-style: none;
+    cursor: pointer;
+    outline: none;
+    /* 點擊時的邊框 */
+    background-color: transparent;
+    /* 無背景色 */
+
+}
+
+@media (max-width: 767px) {
+    .toggleMenuBtn {
+        display: flex;
+        
+    }
+}
+
+.toggleMenuBtn span {
+    border: 2px solid white;
+    transform: rotate(0deg);
+    width: 24px;
+    height: 2px;
+    position: absolute;
+    left:12px;
+
+}
+
+.toggleMenuBtn .top_bar {
+    top:17px;
+
+}
+
+.toggleMenuBtn .mid_bar {
+    top:24px;
+    opacity: 1;
+}
+
+.toggleMenuBtn .bottom_bar {
+    top:31px;
+
+}
+
+.toggleMenu{
+    background-color: black;
+    width: 100%;
+    height: calc(100vh - 48px);
+    position: absolute;
+    top:48px;
+    left:0;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.toggleMenu.active{
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.5s;
+}
+.toggleMenu a{
+    color:white;
+    padding: 25px 30px;
+    display: block;
+    font-size: 20px;
+}
+.toggle_li_1:hover a{
+    background-color: rgb(37, 142, 222);
+    color:black;
+}
+.toggle_li_2:hover a {
+    background-color: rgb(79, 229, 255);
+    color:black;
+}
+.toggle_li_3:hover a{
+    background-color: rgb(207, 143, 255);
+    color:black;
+}
+.toggle_li_4:hover a{
+    background-color: rgb(105, 229, 110);
+    color:black;
+}
+
+main{
+    margin-top:48px;
+}
+
+/* Section_1 */
+
+#section_1{
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+}
+#section_1 .container{
+    height: 100vh; 
+}
+
+.section_1_content{
+    margin-top:145px;
+    margin-bottom: 60px;
+}
+
+#section_1 .section_1_left{
+    color:white;
+    width: 410px;
+}
+
+/* media screen of section_1 content left and right parts */
+
+@media (max-width: 1280px){
+    #section_1 .section_1_left{
+        width:50%;
+    }
+    #section_1 .section_1_right{
+        width:50%;
+    }
+
+}
+@media (max-width: 960px){
+    #section_1 .section_1_left{
+        width:60%
+    }
+    #section_1 .section_1_right{
+        width:40%;
+    }
+}
+@media (max-width: 670px){
+    #section_1 .section_1_left{
+        width:100%
+    }
+    #section_1 .section_1_right{
+        display: none;
+    }
+}
+
+#section_1 .section_1_left h1{
+    font-size: 64px;
+    line-height: 80px;
+    color: rgb(79, 229, 255);
+    font-weight: 600;
+
+}
+.section_1_left_info{
+    margin-top: 100px 0 0 30px;
+}
+
+.section_1_left_info p{
+    max-width: 374px;
+}
+
+.section_1_right{
+    width: 50%;
+}
