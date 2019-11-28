@@ -248,6 +248,7 @@ nav img {
     opacity: 1;
     pointer-events: all;
     transition: 0.5s;
+    z-index: 1000;
 }
 
 .toggleMenu a {
