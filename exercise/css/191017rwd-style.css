@@ -1,0 +1,238 @@
+body{
+    margin: 0;
+}
+.all{
+    width:100%;
+    height: 100vh;
+    background-image: url('https://cdn.pixabay.com/photo/2015/07/13/14/40/paris-843229_960_720.jpg');
+    background-position: center;
+    background-size:cover;
+    display:flex;
+}
+nav{
+    width:250px;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.267);
+}
+.logo{
+    width:100px;
+    height: 100px;
+    background-image: url('http://res.publicdomainfiles.com/pdf_view/67/13922070016485.png');
+    background-position: top;
+    background-size:cover;
+    margin:auto;
+    margin-top: 100px;
+}
+.menulist{
+    margin-top:50px;
+}
+
+nav .menulist ul{
+    margin:0;
+    list-style-type: none;
+    padding:0;
+
+}
+nav .menulist ul li{
+    text-align: center;
+}
+nav .menulist ul li:hover{
+    background-color: black;
+}
+nav .menulist ul li a{
+    text-decoration: none;
+    font-size: 20px;
+    color: lightgray;
+    padding: 0 100px;
+}
+nav .menulist ul li a:hover{
+    color:lightpink;
+}
+nav .menulist ul li a:visited{
+    color:rgb(125, 250, 120);
+}
+
+nav .menulist ul li:hover a{
+    color:lightpink;
+}
+nav .menulist ul li:active a{
+    color:rgb(255, 234, 46);
+}
+.main{
+    width:calc(100% - 250px);
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.photos{
+    width:600px;
+    height:500px;
+    display: flex;
+}
+.photo1{
+    width:200px;
+    height:500px;
+    background-image: url('https://cdn.pixabay.com/photo/2014/05/02/23/46/new-york-city-336475_960_720.jpg');
+    background-position: center;
+    background-size:cover;
+    opacity: 0.7;
+}
+.photos .photo1:hover{
+    transform: scale(1.04,1.04);
+    opacity: 1;
+    transition: 1s;
+    position: relative;
+    z-index: 5;
+}
+.photo2{
+    width:200px;
+    height:500px;
+    background-image: url('https://cdn.pixabay.com/photo/2016/11/18/19/01/paris-1836415_960_720.jpg');
+    background-position: center;
+    background-size:cover;
+    opacity: 0.7;
+}
+.photos .photo2:hover{
+    transform: scale(1.04,1.04);
+    opacity: 1;
+    transition: 1s;
+    position: relative;
+    z-index: 5;
+}
+.photo3{
+    width:200px;
+    height:500px;
+    background-image: url('https://cdn.pixabay.com/photo/2016/11/29/05/55/adult-1867665_960_720.jpg');
+    background-position: center;
+    background-size:cover;
+    opacity: 0.7;
+}
+.photos .photo3:hover{
+    transform: scale(1.04,1.04);
+    opacity: 1;
+    transition: 1s;
+    position: relative;
+    z-index: 5;
+}
+
+@media screen and (max-width:852px){
+.photos{
+        width:90%;
+        height:500px;
+        display: flex;
+        flex-wrap:wrap;
+}
+.photo1{
+        width:100%;
+        height:250px;
+        background-color: lightcoral;
+    }
+.photo2{
+        width:50%;
+        height:250px;
+        background-color: lightblue;
+    }
+.photo3{
+        width:50%;
+        height:250px;
+        background-color: lightgreen;
+    }
+}
+
+@media screen and (max-width:640px){
+.all{
+    flex-wrap: wrap;
+}
+nav{
+    width:100%;
+    height: 100px;
+    display:flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo{
+    margin:0;
+    width:80px;
+    height: 80px;
+    align-self: center;
+
+}
+.menulist{
+    padding:0;
+    margin:0;
+}
+nav .menulist ul{
+    display: flex;
+    align-items: center;
+    height:100px;
+
+}
+nav .menulist ul li{
+    padding: 5px 5px;
+}
+nav .menulist ul li a{
+    padding: 20px 20px;
+}
+.main{
+    width:100vw;
+    height: calc(100vh - 100px);
+}
+
+}
+
+@media screen and (max-width:450px){
+
+.all{
+    background-image: none;
+    background-color: rgb(212, 212, 212);
+}
+nav{
+    justify-content: center;
+    position: relative;
+}
+nav .menulist ul{
+    display:none;
+}
+nav .menulist:hover ul{
+    display:block;
+    position: absolute;
+    top:50px;
+    background-color: black;
+    z-index: 5;
+}
+
+nav .menulist{
+    width:50px;
+    height: 50px;
+    position: absolute;
+    left:20px;
+    top:25px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png');
+    background-size: cover;
+    background-position: center;
+}
+.logo{
+    order:1;
+}
+.main{
+    display:block;
+}
+.photos{
+    width:100%;
+    height: 100vh;
+    display:block;
+}
+.photo2{
+    width: 100%;
+    height:300px;
+}
+.photo3{
+    width: 100%;
+    height:300px;
+}
+
+
+
+}
