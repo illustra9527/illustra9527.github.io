@@ -1,0 +1,141 @@
+@import "./02-2019-11-26-scss練習-variable";
+
+body{
+    margin: 0;
+}
+
+.all{
+    #section_1{
+        background-image: url('https://www.w3schools.com/howto/img_parallax.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        height: 100vh;
+        width: 100%;
+
+
+        .mask{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $mask-color;
+
+            h1{
+                background-color: $bg-title;
+                padding: 15px;
+                color: $font-white;
+                font-size: $size-title;
+                letter-spacing: 10px;
+            }
+        }
+    }
+
+    #section_2{
+
+        .section_2_contents{
+            padding: 50px 80px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            h2{
+                color: $font-darkgray;
+                font-size: $size-title_2;
+            }
+            p{
+                color:$font-gray;
+                font-size: $size-text;
+            }
+        }
+    }
+
+    #section_3{
+        background-image: url('https://www.w3schools.com/howto/img_parallax2.jpg');
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        min-height: 400px;
+
+        .section_3_mask{
+            width: 100%;
+            min-height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $mask-color;
+            p{
+                font-size: $size-title_2;
+                color: $font-white;
+                letter-spacing: 10px;
+            }
+        }
+    }
+
+    #section_4{
+        background-color: $bg-content;
+        padding: 50px 80px;
+        p{
+            color: $font-white;
+            font-size: $size-text;
+        }
+    }
+
+    #section_5{
+        background-image: url('https://www.w3schools.com/howto/img_parallax3.jpg');
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        min-height: 400px;
+
+        .section_5_mask{
+            width: 100%;
+            min-height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $mask-color;
+
+            p{
+                color: $font-white;
+                font-size: $size-title_2;
+                letter-spacing: 10px;
+            }
+        }
+
+    }
+
+    #section_6{
+        background-color: $bg-content;
+        padding: 50px 80px;
+        p{
+            color: $font-white;
+            font-size: $size-text;
+        }
+    }
+
+    #section_7{
+        width: 100%;
+        height: 100vh;
+        background-image: url('https://www.w3schools.com/howto/img_parallax.jpg');
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        .section_7_mask{
+            width: 100%;
+            height: 100%;
+            background-color: $mask-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p{
+                padding: 15px;
+                font-size: $size-title;
+                color: $font-white;
+                background-color: $bg-title;
+                letter-spacing: 10px;
+            }
+        }
+    }
+}

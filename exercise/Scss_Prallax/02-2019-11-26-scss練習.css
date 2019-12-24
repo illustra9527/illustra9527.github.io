@@ -1,0 +1,168 @@
+body {
+  margin: 0;
+}
+
+.all #section_1 {
+  background-image: url("https://www.w3schools.com/howto/img_parallax.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+}
+
+.all #section_1 .mask {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.all #section_1 .mask h1 {
+  background-color: #777;
+  padding: 15px;
+  color: white;
+  font-size: 32px;
+  letter-spacing: 10px;
+}
+
+.all #section_2 .section_2_contents {
+  padding: 50px 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.all #section_2 .section_2_contents h2 {
+  color: #111111;
+  font-size: 24px;
+}
+
+.all #section_2 .section_2_contents p {
+  color: #777;
+  font-size: 16px;
+}
+
+.all #section_3 {
+  background-image: url("https://www.w3schools.com/howto/img_parallax2.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 400px;
+}
+
+.all #section_3 .section_3_mask {
+  width: 100%;
+  min-height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.all #section_3 .section_3_mask p {
+  font-size: 24px;
+  color: white;
+  letter-spacing: 10px;
+}
+
+.all #section_4 {
+  background-color: #111111;
+  padding: 50px 80px;
+}
+
+.all #section_4 p {
+  color: white;
+  font-size: 16px;
+}
+
+.all #section_5 {
+  background-image: url("https://www.w3schools.com/howto/img_parallax3.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 400px;
+}
+
+.all #section_5 .section_5_mask {
+  width: 100%;
+  min-height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.all #section_5 .section_5_mask p {
+  color: white;
+  font-size: 24px;
+  letter-spacing: 10px;
+}
+
+.all #section_6 {
+  background-color: #111111;
+  padding: 50px 80px;
+}
+
+.all #section_6 p {
+  color: white;
+  font-size: 16px;
+}
+
+.all #section_7 {
+  width: 100%;
+  height: 100vh;
+  background-image: url("https://www.w3schools.com/howto/img_parallax.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.all #section_7 .section_7_mask {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.all #section_7 .section_7_mask p {
+  padding: 15px;
+  font-size: 32px;
+  color: white;
+  background-color: #777;
+  letter-spacing: 10px;
+}
+/*# sourceMappingURL=02-2019-11-26-scss練習.css.map */
