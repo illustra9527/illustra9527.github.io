@@ -200,6 +200,12 @@ nav .menulist ul li:hover a{
     z-index: 5;
 }
 
+@media screen and (max-width:375px){
+    .main .photos .photo3:hover{
+        transform:unset;
+    }
+}
+
 .main .photos .photo3-text{
     font-size:50px;
 }
